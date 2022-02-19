@@ -3,7 +3,7 @@ double f(double a) { return a - 10; }
 double bisection(double a, double b, double e)
 {
 	double fa = f(a);
-	while (abs(a - b) > e)
+	while (true)
 	{
 		double x = (a + b) / 2;
 		if ((abs(x - a) < e) || (abs(x - b) < e))
