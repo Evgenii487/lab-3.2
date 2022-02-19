@@ -6,7 +6,7 @@ double bisection(double a, double b, double e)
 	while (abs(a - b) > e)
 	{
 		double x = (a + b) / 2;
-		if ((x == a) || (x == b))
+		if ((abs(x - a) < e) || (abs(x - b) < e))
 			return x;
 		else if (f(x) * fa > 0)
 			a = x;
