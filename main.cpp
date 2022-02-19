@@ -1,35 +1,23 @@
 #include <iostream>
-#include <algorithm>
-
-// Есть ли в строке s заданная буква
-bool isConsist(int i, char c, std::string& s)
+double f(double a) { return a - 10; }
+double bisection(double a, double b, double e)
 {
-    if (i > s.length())
-        return false;
-    if (s[i] == c)
-        return true;
-    return isConsist(i + 1, c, s);
+	double fa = f(a);
+	while (abs(a - b) > e)
+	{
+		double x = (a + b) / 2;
+		if ((x == a) || (x == b))
+			return x;
+		else if (f(x) * fa > 0)
+			a = x;
+		else
+			b = x;
+	}
 }
-
-// Факториал f(n) = n * f(n-1)
-int f(int n)
-{
-    // 1. Терминирующее условие
-    if (n == 0)
-        return 1;
-
-    // 2. Запуск рекурсии с отличающимися параметрами
-    return n * f(n - 1);
-}
-
 int main()
 {
-    std::cout << f(6) << std::endl;
-    std::string s = "bcad";
-    std::cout << isConsist(0, 'e', s) << std::endl;
-
-    int x[10] = { 1,2,3,462,621,6,2,6,7 };
-    std::sort(x, x + 10);
-
-    return 0;
+	std::cout << "x^2 - 10 = 0" << std::endl;
+	double e = 0.0001;
+	double ds = bisection(0, 10, e);
+	std::cout << "x = " << ds;
 }
